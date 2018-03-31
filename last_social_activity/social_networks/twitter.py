@@ -41,7 +41,7 @@ class TwitterReader(object):
 		# Otherwise, get from Twitter
 		try:
 			tweets = self.api.GetUserTimeline(screen_name=self.username)[:num_tweets]
-		except (HttpError, HTTPException, ValueError, requests.exceptions.RequestException) as e:
+		except (HTTPError, HTTPException, ValueError, requests.exceptions.RequestException) as e:
 			if SocialNetworkItemCache.hit("twitter", num_tweets):
 				return SocialNetworkItemCache.get("twitter", num_tweets).response_dict
 			return []
