@@ -48,7 +48,7 @@ class FacebookReader(object):
 		try:
 			response = requests.get(FacebookReader.GET_POSTS_URL.format(self.profile), params=parameters)
 			posts = response.json().get('data')
-		except (HttpError, HTTPException, ValueError, requests.exceptions.RequestException) as e:
+		except (HTTPError, HTTPException, ValueError, requests.exceptions.RequestException) as e:
 			# If there is a hit, get from cache
 			if SocialNetworkItemCache.hit("facebook", num_posts):
 				return SocialNetworkItemCache.get("facebook", num_posts).response_dict
