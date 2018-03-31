@@ -46,7 +46,7 @@ class FiveHundredReader(object):
 		try:
 			response = urlopen(url)
 			data = json.load(response)
-		except (HttpError, HTTPException, ValueError) as e:
+		except (HTTPError, HTTPException, ValueError) as e:
 			if SocialNetworkItemCache.hit("fivehundred", num_images):
 				return SocialNetworkItemCache.get("fivehundred", num_images).response_dict
 			return []
