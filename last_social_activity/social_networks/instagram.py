@@ -45,7 +45,7 @@ class InstagramReader(object):
 		try:
 			response = urlopen(url)
 			data = json.load(response)
-		except (HttpError, HTTPException, ValueError) as e:
+		except (HTTPError, HTTPException, ValueError) as e:
 			if SocialNetworkItemCache.hit("instagram", num_images):
 				return SocialNetworkItemCache.get("instagram", num_images).response_dict
 			return []
