@@ -42,7 +42,7 @@ class FiveHundredReader(object):
 			return SocialNetworkItemCache.get("fivehundred", num_images).response_dict
 
 		# Otherwise fetch data from 500px servers
-			url = FiveHundredReader.URL.format(self.access_token, self.profile, num_images)
+		url = FiveHundredReader.URL.format(self.access_token, self.profile, num_images)
 		try:
 			response = urlopen(url)
 			data = json.load(response)
@@ -52,7 +52,7 @@ class FiveHundredReader(object):
 			return []
 
 		media = data.get('photos', None)
-		print media
+
 		return media
 
 	# Return the credentials of the 500px account
