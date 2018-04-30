@@ -54,6 +54,9 @@ class FacebookReader(object):
 				return SocialNetworkItemCache.get("facebook", num_posts).response_dict
 			return []
 
+		if posts is None:
+			return []
+
 		for post in posts:
 			post['created_at'] = parser.parse(post.get('created_time')).isoformat()
 
